@@ -25,13 +25,6 @@ pipeline {
             }
         }
 
-        stage('Integration Test') {
-            steps {
-                // Deployment steps can go here
-                sh "mvn verify"
-                // sh 'deploy-script.sh' // Uncomment and modify as needed
-            }
-        }
          
     }
 }
