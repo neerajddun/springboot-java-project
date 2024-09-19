@@ -24,13 +24,7 @@ pipeline {
                sh "mvn test"
             }
         }
-          stage('Package') {
-            steps {
-                // Package the application (e.g., create a JAR/WAR file)
-                sh 'mvn package'
-            }
-        }
-
+        
         stage('Deploy') {
             steps {
                 // Deployment steps can go here
