@@ -24,11 +24,11 @@ pipeline {
                sh "mvn test"
             }
         }
-        
-        stage('Deploy') {
+
+        stage('Integration Test') {
             steps {
                 // Deployment steps can go here
-                echo 'Deploying the application...'
+                sh "mvn verify"
                 // sh 'deploy-script.sh' // Uncomment and modify as needed
             }
         }
