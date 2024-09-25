@@ -4,7 +4,7 @@ pipeline {
     tools {
 
         maven 'mvn'
-        jdk 'JDK17'
+        jdk 'JDK 17'
     } 
 
     stages {
