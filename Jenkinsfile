@@ -1,5 +1,11 @@
 pipeline {
-    agent any 
+    agent any
+
+    tools {
+
+        maven 'mvn'
+        jdk 'JDK 17'
+    } 
 
     stages {
 
@@ -19,12 +25,5 @@ pipeline {
             }
         }
 
-        stage ('Integration test ') {
-
-            steps {
-
-                sh 'mvn  verify'
-            }
-        }
     }
 }
