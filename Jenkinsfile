@@ -1,35 +1,27 @@
-pipeline {   
-    agent any 
-    tools{
-        jdk 'jdk17'
-        maven 'mvn'
+
+pipeline {
+    
+ tools {
+        jdk 'JDK 17'  // Use the JDK name you configured in Global Tool Configuration
+        maven 'mvn'  // If you are using Maven, ensure it is configured too
     }
-
     stages {
-        stage('Git checkout') {
+
+        stage ('Checkout') {
+
             steps {
-               git branch: 'main', url: 'https://github.com/neerajddun/springboot-java-poject.git'
+
+                git branch: 'main', url: 'https://github.com/neerajddun/neerajddun-springboot-pipe.git'
             }
         }
 
-         stage('Build') {
+        stage ("unit test") {
+
             steps {
-                // Compile the code
-                sh 'mvn clean compile'
+
+                sh 'mvn test'
             }
         }
 
-        stage('Unit Test') {
-            steps {
-               sh "mvn test"
-            }
-        }
-        stage ('Integration Test') {
-            steps {
-                sh 'mvn verify'
-            }
-        }
-
-         
     }
 }
