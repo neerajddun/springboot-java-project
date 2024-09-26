@@ -1,5 +1,7 @@
 
 pipeline {
+
+    agent any 
     
  tools {
         jdk 'JDK 17'  // Use the JDK name you configured in Global Tool Configuration
@@ -22,6 +24,5 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
     }
 }
