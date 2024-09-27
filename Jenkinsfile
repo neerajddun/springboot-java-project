@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/springboot-jenkins-demo.git' // Replace with your repository URL
+                git 'https://github.com/neerajddun/springboot-java-project1.git' // Replace with your repository URL
             }
         }
 
