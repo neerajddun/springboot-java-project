@@ -1,28 +1,43 @@
-
 pipeline {
+    agent any
 
-    agent any 
-    
- tools {
-        jdk 'JDK 17'  // Use the JDK name you configured in Global Tool Configuration
-        maven 'mvn'  // If you are using Maven, ensure it is configured too
+    tools {
+        maven 'Maven'  // Use the name configured in Jenkins
+        jdk 'JDK 17'   // Ensure JDK is also configured in Jenkins
     }
+
     stages {
-
-        stage ('Checkout') {
-
+        stage('Checkout') {
             steps {
-
-                git branch: 'main', url: 'https://github.com/neerajddun/neerajddun-springboot-pipe.git'
+                git 'https://github.com/your-repo/springboot-jenkins-demo.git' // Replace with your repository URL
             }
         }
 
-        stage ("unit test") {
-
+        stage('Build') {
             steps {
-
-              sh 'mvn test -X' 
+                sh 'mvn clean package'  // Build the application
             }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'           // Run tests
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...' // Add your deployment logic here
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and tests succeeded!'
+        }
+        failure {
+            echo 'Build or tests failed.'
         }
     }
 }
